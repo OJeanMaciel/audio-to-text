@@ -14,6 +14,7 @@ const App = () => {
       const recognition = new SpeechRecognition();
       recognition.continuous = false;
       recognition.interimResults = true;
+      recognition.lang = 'pt-BR';
       recognition.onend = () => setIsListening(false);
       recognition.onresult = (event) => {
         const transcript = Array.from(event.results)
@@ -48,8 +49,9 @@ const App = () => {
 
   const speakMessage = (message) => {
     const utterance = new SpeechSynthesisUtterance(message);
+    utterance.lang = 'pt-BR';
     speechSynthesis.speak(utterance);
-  };
+};
 
   const startListening = () => {
     if (speechRecognition) {
